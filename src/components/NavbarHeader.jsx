@@ -1,11 +1,12 @@
 import { IconButton, MobileNav } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react';
 import { IoClose, IoMenu } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../../public/assets/images/logo.png';
 
 const NavbarHeader = () => {
   const [openNav, setOpenNav] = useState(false);
+  const location = useLocation();
   useEffect(() => {
     window.addEventListener(
       'resize',
@@ -14,21 +15,25 @@ const NavbarHeader = () => {
   }, []);
 
   const navList = (
-    <ul className="flex flex-col gap-2 mt-5 text-white lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-10">
+    <ul className="flex flex-col gap-2 mt-5 text-white lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-20">
       <Link
         to={'/'}
-        className="flex items-center"
+        className={`flex items-center ${
+          location.pathname === '/' ? 'border-b-2 border-oren' : ''
+        }`}
       >
         Home
       </Link>
       <Link
-        to={'/'}
-        className="flex items-center"
+        to={'/about'}
+        className={`flex items-center ${
+          location.pathname === '/about' ? 'border-b-2 border-oren' : ''
+        }`}
       >
         About
       </Link>
       <Link
-        to={'/'}
+        to={'/game'}
         className="flex items-center"
       >
         Game

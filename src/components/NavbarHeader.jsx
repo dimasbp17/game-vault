@@ -14,7 +14,7 @@ const NavbarHeader = () => {
   }, []);
 
   const navList = (
-    <ul className="flex flex-col gap-2 mt-2 mb-4 text-white lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-10">
+    <ul className="flex flex-col gap-2 mt-5 text-white lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-10">
       <Link
         to={'/'}
         className="flex items-center"
@@ -39,12 +39,12 @@ const NavbarHeader = () => {
   return (
     <>
       <div className="w-full">
-        <div className="sticky top-0 z-10 max-w-full px-4 py-2 rounded-none bg-biru lg:px-10 lg:py-5 bg-none">
+        <div className="sticky top-0 z-10 max-w-full px-4 pt-4 rounded-none bg-biru lg:px-10 lg:py-5 bg-none">
           <div className="flex items-center justify-between text-blue-gray-900">
             <img
               src={logo}
               alt="Logo"
-              className="w-28"
+              className="w-24 lg:w-28"
             />
             <div className="flex items-center gap-4">
               <div className="hidden mr-4 lg:block">{navList}</div>
@@ -55,7 +55,17 @@ const NavbarHeader = () => {
                 ripple={false}
                 onClick={() => setOpenNav(!openNav)}
               >
-                {openNav ? <IoClose size={25} /> : <IoMenu size={25} />}
+                {openNav ? (
+                  <IoClose
+                    size={25}
+                    className="text-white"
+                  />
+                ) : (
+                  <IoMenu
+                    size={25}
+                    className="text-white"
+                  />
+                )}
               </IconButton>
             </div>
           </div>

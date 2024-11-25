@@ -3,10 +3,10 @@ import Jumbotron from './partials/Jumbotron';
 import useGameStore from '../../stores/useGameStore';
 
 const Home = () => {
-  const { games, fetchGames, loading, error } = useGameStore();
+  const { games, fetchAllGames, loading, error } = useGameStore();
   useEffect(() => {
-    fetchGames();
-  }, [fetchGames]);
+    fetchAllGames();
+  }, [fetchAllGames]);
   return (
     <>
       <div>

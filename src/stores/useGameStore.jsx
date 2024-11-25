@@ -1,19 +1,33 @@
 import { create } from 'zustand';
-import { getAllGames } from '../services/api';
+import { getAllGames, getDetailGames } from '../services/gameApi';
 
 const useGameStore = create((set) => ({
-  games: [],
+  allGames: [],
+  gameDetail: null,
   loading: false,
   error: null,
 
-  fetchGames: async () => {
-    set({ loading: true, error: null });
+  fetchAllGames: async () => {
     try {
-      const games = await getAllGames();
-      set({ games, loading: false });
-      console.log('Fetched games:', games);
+      set({ loading: true, error: null });
+      const allGames = await getAllGames();
+      set({ allGames });
     } catch (error) {
-      set({ error: error.message, loading: false });
+      set({ error: error.message });
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  fetchGameDetail: async (id) => {
+    try {
+      set({ loading: true, error: null });
+      const gameDetail = await getDetailGames(id);
+      set({ gameDetail });
+    } catch (error) {
+      set({ error: error.message });
+    } finally {
+      set({ loading: false });
     }
   },
 }));

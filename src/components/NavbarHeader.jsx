@@ -49,7 +49,7 @@ const NavbarHeader = () => {
             <img
               src={logo}
               alt="Logo"
-              className="w-24 lg:w-28"
+              className="w-24 lg:w-32"
             />
             <div className="flex items-center gap-4">
               <div className="hidden mr-4 lg:block">{navList}</div>

@@ -11,6 +11,7 @@ const useGameStore = create((set) => ({
     try {
       set({ loading: true, error: null });
       const allGames = await getAllGames();
+      console.log('Fetched games:', allGames);
       set({ allGames });
     } catch (error) {
       set({ error: error.message });

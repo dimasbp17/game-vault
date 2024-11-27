@@ -21,7 +21,7 @@ const Jumbotron = () => {
             Dive into the gaming world and uncover your next great adventure!
           </h3>
           <ButtonCustom
-            className="w-fit cut-corner hover:bg-amber-700"
+            className="px-4 py-3 w-fit cut-corner hover:bg-amber-700"
             variant="primary"
           >
             Explore Games

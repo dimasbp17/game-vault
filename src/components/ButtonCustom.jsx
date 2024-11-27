@@ -2,7 +2,7 @@ import React from 'react';
 
 const ButtonCustom = ({ children, className = '', variant }) => {
   const baseStyles =
-    'px-4 py-3 font-medium text-sm focus:outline-none transition duration-200 shadow-lg';
+    'font-medium text-sm focus:outline-none transition duration-200 shadow-lg';
 
   const variants = {
     primary: 'bg-oren text-white',

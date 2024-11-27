@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { IoClose, IoMenu } from 'react-icons/io5';
 import { Link, useLocation } from 'react-router-dom';
 import logo from '../../public/assets/images/logo.png';
+import Search from './Search';
 
 const NavbarHeader = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -15,7 +16,7 @@ const NavbarHeader = () => {
   }, []);
 
   const navList = (
-    <ul className="flex flex-col gap-2 mt-5 text-white lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-20">
+    <ul className="flex flex-col gap-2 mt-5 text-white lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-16">
       <Link
         to={'/'}
         className={`flex items-center ${
@@ -34,7 +35,9 @@ const NavbarHeader = () => {
       </Link>
       <Link
         to={'/game'}
-        className="flex items-center"
+        className={`flex items-center ${
+          location.pathname === '/game' ? 'border-b-2 border-oren' : ''
+        }`}
       >
         Game
       </Link>
@@ -51,6 +54,9 @@ const NavbarHeader = () => {
               alt="Logo"
               className="w-24 lg:w-32"
             />
+            <div className="">
+              <Search />
+            </div>
             <div className="flex items-center gap-4">
               <div className="hidden mr-4 lg:block">{navList}</div>
 

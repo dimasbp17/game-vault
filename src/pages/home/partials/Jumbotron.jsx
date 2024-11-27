@@ -7,7 +7,9 @@ const Jumbotron = () => {
     <>
       <div className="grid w-full grid-cols-12 my-10 text-white">
         <div className="flex flex-col justify-between col-span-full lg:col-span-6">
-          <h1 className="font-semibold text-oren">Made By Dimas</h1>
+          <h1 className="font-semibold text-oren">
+            Made by Dimas Bagus Prasetyo
+          </h1>
           <h1 className="text-5xl font-bold">Discover various games</h1>
           <h3 className="text-sm leading-7 text-justify">
             Discover a vast universe of games from around the world, spanning

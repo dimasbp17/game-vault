@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import useGameStore from '../../stores/useGameStore';
 import CardGame from '../../components/card/CardGame';
+import Pagination from '../../components/Pagination';
 
 const AllGames = () => {
   const { allGames, fetchAllGames, loading, error } = useGameStore();
@@ -39,6 +40,9 @@ const AllGames = () => {
               rating={game.rating}
             />
           ))}
+        </div>
+        <div>
+          <Pagination />
         </div>
       </div>
     </>

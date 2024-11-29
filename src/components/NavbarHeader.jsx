@@ -49,11 +49,13 @@ const NavbarHeader = () => {
       <div className="w-full">
         <div className="sticky top-0 z-10 max-w-full px-4 pt-4 rounded-none bg-biru lg:px-10 lg:py-5 bg-none">
           <div className="flex items-center justify-between text-blue-gray-900">
-            <img
-              src={logo}
-              alt="Logo"
-              className="w-24 lg:w-32"
-            />
+            <Link to={'/'}>
+              <img
+                src={logo}
+                alt="Logo"
+                className="w-24 lg:w-32"
+              />
+            </Link>
             <div className="">
               <Search />
             </div>

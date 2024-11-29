@@ -1,7 +1,7 @@
 import { Card } from '@material-tailwind/react';
 import React from 'react';
-import { IoIosRocket, IoMdStar } from 'react-icons/io';
-import { IoGameController } from 'react-icons/io5';
+import { IoIosRocket } from 'react-icons/io';
+import { IoGameController, IoStar } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 
 const CardGame = ({ link, image, alt, title, release, genre, rating }) => {
@@ -19,19 +19,19 @@ const CardGame = ({ link, image, alt, title, release, genre, rating }) => {
             <h3 className="flex flex-col text-xs md:flex-row md:items-center md:justify-between">
               <span className="flex items-center gap-1 text-[11px] text-gray-500">
                 <IoIosRocket /> Release date
-              </span>{' '}
+              </span>
               <span>{release}</span>
             </h3>
             <h3 className="flex flex-col text-xs md:flex-row md:items-center md:justify-between">
               <span className="flex items-center gap-1 text-[11px] text-gray-500">
                 <IoGameController /> Genre
-              </span>{' '}
+              </span>
               <span>{genre}</span>
             </h3>
             <h3 className="flex flex-col text-xs md:flex-row md:items-center md:justify-between">
               <span className="flex items-center gap-1 text-[11px] text-gray-500">
-                <IoMdStar /> Rating
-              </span>{' '}
+                <IoStar /> Rating
+              </span>
               <span>{rating}</span>
             </h3>
           </div>

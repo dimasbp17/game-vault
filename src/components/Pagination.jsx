@@ -1,57 +1,30 @@
-import { Button, IconButton } from '@material-tailwind/react';
 import React from 'react';
+import { IconButton } from '@material-tailwind/react';
 import { MdArrowBackIos, MdArrowForwardIos } from 'react-icons/md';
 
-const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  // const pageNumbers = [];
-  // for (let i = 1; i <= totalPages; i++) {
-  //   if (i > currentPage - 3 && i < currentPage + 5 && pageNumbers.length < 5) {
-  //     pageNumbers.push(i);
-  //   }
-  // }
+const Pagination = ({ onPrevious, onNext, hasPrevious, hasNext }) => {
   return (
-    <>
-      <div className="flex justify-center w-full font-poppins">
-        <span className="absolute text-white">
-          {/* Page {currentPage} of {totalPages} */}
-        </span>
-        <div className="flex items-center justify-center mt-8 space-x-2">
-          <IconButton
-            // onClick={() => onPageChange(currentPage - 1)}
-            // disabled={currentPage === 1}
-            className="text-white bg-oren disabled:bg-gray-400"
-            size="sm"
-          >
-            <MdArrowBackIos />
-          </IconButton>
+    <div className="flex justify-center w-full font-poppins">
+      <div className="flex items-center justify-center mt-8 space-x-2">
+        <IconButton
+          onClick={onPrevious}
+          disabled={!hasPrevious}
+          className="text-white bg-oren disabled:bg-gray-400"
+          size="sm"
+        >
+          <MdArrowBackIos />
+        </IconButton>
 
-          {/* {pageNumbers.map((number) => ( */}
-          <button
-            // key={number}
-            // className={`mx-2 size-8 border rounded-md ${
-            //   number === currentPage
-            //     ? 'bg-blue-500 text-white'
-            //     : 'bg-white text-black'
-            // }`}
-            className={`mx-2 size-8 border rounded-md 
-            `}
-            // onClick={() => onPageChange(number)}
-          >
-            {/* {number} */}
-          </button>
-          {/* ))} */}
-
-          <IconButton
-            // onClick={() => onPageChange(currentPage + 1)}
-            // disabled={currentPage === totalPages}
-            size="sm"
-            className="text-white bg-oren disabled:bg-gray-400"
-          >
-            <MdArrowForwardIos />
-          </IconButton>
-        </div>
+        <IconButton
+          onClick={onNext}
+          disabled={!hasNext}
+          className="text-white bg-oren disabled:bg-gray-400"
+          size="sm"
+        >
+          <MdArrowForwardIos />
+        </IconButton>
       </div>
-    </>
+    </div>
   );
 };
 

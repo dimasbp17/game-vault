@@ -1,13 +1,32 @@
 import React, { useEffect } from 'react';
-import useGameStore from '../../stores/useGameStore';
 import CardGame from '../../components/card/CardGame';
 import Pagination from '../../components/Pagination';
+import useGameStore from '../../stores/useGameStore';
 
 const AllGames = () => {
-  const { allGames, fetchAllGames, loading, error } = useGameStore();
+  const {
+    allGames,
+    fetchAllGames,
+    nextPage,
+    prevPage,
+    countGame,
+    loading,
+    error,
+  } = useGameStore();
+
   useEffect(() => {
     fetchAllGames();
   }, [fetchAllGames]);
+
+  const handlePageChange = (page) => {
+    if (page) {
+      fetchAllGames(page);
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -17,10 +36,13 @@ const AllGames = () => {
       year: 'numeric',
     });
   };
+
   return (
     <>
       <div className="my-10">
-        <h1 className="mb-5 text-3xl font-bold text-white">All Games</h1>
+        <h1 className="mb-5 text-3xl font-bold text-white">
+          All Games ({countGame} game)
+        </h1>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
           {allGames.map((game) => (
             <CardGame
@@ -42,7 +64,12 @@ const AllGames = () => {
           ))}
         </div>
         <div>
-          <Pagination />
+          <Pagination
+            onPrevious={() => handlePageChange(prevPage)}
+            onNext={() => handlePageChange(nextPage)}
+            hasPrevious={!!prevPage}
+            hasNext={!!nextPage}
+          />
         </div>
       </div>
     </>

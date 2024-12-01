@@ -7,8 +7,9 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   const { allGames, fetchAllGames, loading, error } = useGameStore();
+
   useEffect(() => {
-    fetchAllGames();
+    fetchAllGames(1);
   }, [fetchAllGames]);
 
   const formatDate = (dateString) => {

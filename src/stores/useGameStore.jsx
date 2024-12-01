@@ -4,15 +4,22 @@ import { getAllGames, getDetailGames } from '../services/gameApi';
 const useGameStore = create((set) => ({
   allGames: [],
   gameDetail: null,
+  nextPage: null,
+  prevPage: null,
+  countGame: null,
   loading: false,
   error: null,
 
-  fetchAllGames: async () => {
+  fetchAllGames: async (page) => {
     try {
       set({ loading: true, error: null });
-      const allGames = await getAllGames();
-      console.log('Fetched games:', allGames);
-      set({ allGames });
+      const data = await getAllGames(page);
+      set({
+        allGames: data.results,
+        nextPage: data.next,
+        prevPage: data.previous,
+        countGame: data.count,
+      });
     } catch (error) {
       set({ error: error.message });
     } finally {

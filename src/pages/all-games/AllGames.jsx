@@ -2,17 +2,11 @@ import React, { useEffect } from 'react';
 import CardGame from '../../components/card/CardGame';
 import Pagination from '../../components/Pagination';
 import useGameStore from '../../stores/useGameStore';
+import CardGameSkeleton from '../../components/card/CardGameSkeleton';
 
 const AllGames = () => {
-  const {
-    allGames,
-    fetchAllGames,
-    nextPage,
-    prevPage,
-    countGame,
-    loading,
-    error,
-  } = useGameStore();
+  const { allGames, fetchAllGames, nextPage, prevPage, countGame, loading } =
+    useGameStore();
 
   useEffect(() => {
     fetchAllGames();
@@ -43,26 +37,32 @@ const AllGames = () => {
         <h1 className="mb-5 text-3xl font-bold text-white">
           All Games ({countGame} game)
         </h1>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-          {allGames.map((game) => (
-            <CardGame
-              key={game.id}
-              title={game.name}
-              image={game.background_image}
-              alt={game.name}
-              release={formatDate(game.released)}
-              genre={
-                game.genres?.length
-                  ? game.genres
-                      .slice(0, 2)
-                      .map((genre) => genre.name)
-                      .join(', ')
-                  : 'Unknown'
-              }
-              rating={game.rating}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+            <CardGameSkeleton />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+            {allGames.map((game) => (
+              <CardGame
+                key={game.id}
+                title={game.name}
+                image={game.background_image}
+                alt={game.name}
+                release={formatDate(game.released)}
+                genre={
+                  game.genres?.length
+                    ? game.genres
+                        .slice(0, 2)
+                        .map((genre) => genre.name)
+                        .join(', ')
+                    : 'Unknown'
+                }
+                rating={game.rating}
+              />
+            ))}
+          </div>
+        )}
         <div>
           <Pagination
             onPrevious={() => handlePageChange(prevPage)}

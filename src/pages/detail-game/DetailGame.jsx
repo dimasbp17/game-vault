@@ -1,6 +1,7 @@
 import React from 'react';
 
 const DetailGame = () => {
+
   return (
     <>
       <div>

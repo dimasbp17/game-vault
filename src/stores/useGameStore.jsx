@@ -12,13 +12,13 @@ const useGameStore = create((set) => ({
 
   fetchAllGames: async (page) => {
     try {
-      set({ loading: true, error: null });
+      set({ loading: true, error: null, allGames: [] });
       const data = await getAllGames(page);
       set({
-        allGames: data.results,
-        nextPage: data.next,
-        prevPage: data.previous,
-        countGame: data.count,
+        allGames: data.results || [],
+        nextPage: data.next || null,
+        prevPage: data.previous || null,
+        countGame: data.count || 0,
       });
     } catch (error) {
       set({ error: error.message });

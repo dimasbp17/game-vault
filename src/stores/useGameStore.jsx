@@ -27,10 +27,10 @@ const useGameStore = create((set) => ({
     }
   },
 
-  fetchGameDetail: async (id) => {
+  fetchGameDetail: async (slug) => {
     try {
       set({ loading: true, error: null });
-      const gameDetail = await getDetailGames(id);
+      const gameDetail = await getDetailGames(slug);
       set({ gameDetail });
     } catch (error) {
       set({ error: error.message });

@@ -4,9 +4,10 @@ import useGameStore from '../../stores/useGameStore';
 import CardGame from '../../components/card/CardGame';
 import ButtonCustom from '../../components/ButtonCustom';
 import { Link } from 'react-router-dom';
+import CardGameSkeleton from '../../components/card/CardGameSkeleton';
 
 const Home = () => {
-  const { allGames, fetchAllGames, loading, error } = useGameStore();
+  const { allGames, fetchAllGames, loading } = useGameStore();
 
   useEffect(() => {
     fetchAllGames(1);
@@ -38,26 +39,33 @@ const Home = () => {
             </ButtonCustom>
           </Link>
         </div>
-        <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-          {allGames.map((game) => (
-            <CardGame
-              key={game.id}
-              title={game.name}
-              image={game.background_image}
-              alt={game.name}
-              release={formatDate(game.released)}
-              genre={
-                game.genres?.length
-                  ? game.genres
-                      .slice(0, 2)
-                      .map((genre) => genre.name)
-                      .join(', ')
-                  : 'Unknown'
-              }
-              rating={game.rating}
-            />
-          ))}
-        </div>
+        {loading ? (
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+            <CardGameSkeleton />
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+            {allGames.map((game) => (
+              <CardGame
+                key={game.id}
+                title={game.name}
+                image={game.background_image}
+                alt={game.name}
+                release={formatDate(game.released)}
+                genre={
+                  game.genres?.length
+                    ? game.genres
+                        .slice(0, 2)
+                        .map((genre) => genre.name)
+                        .join(', ')
+                    : 'Unknown'
+                }
+                rating={game.rating}
+                link={`game-detail/${game.slug}`}
+              />
+            ))}
+          </div>
+        )}
       </div>
     </>
   );

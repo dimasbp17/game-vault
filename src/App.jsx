@@ -25,7 +25,7 @@ const App = () => {
               element={<AllGames />}
             />
             <Route
-              path="/detail-game"
+              path="/game-detail/:slug"
               element={<DetailGame />}
             />
           </Routes>

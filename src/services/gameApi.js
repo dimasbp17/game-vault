@@ -14,9 +14,11 @@ export const getAllGames = async (page = 1) => {
   }
 };
 
-export const getDetailGames = async (id) => {
+export const getDetailGames = async (slug) => {
   try {
-    const detailGames = await axios.get(`${baseUrl}/games/${id}?key=${apiKey}`);
+    const detailGames = await axios.get(
+      `${baseUrl}/games/${slug}?key=${apiKey}`
+    );
     return detailGames.data;
   } catch (error) {
     console.error('Error fetch detail game:', error);

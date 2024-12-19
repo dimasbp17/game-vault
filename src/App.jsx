@@ -4,6 +4,7 @@ import Home from './pages/home/Home';
 import MainLayout from './layouts/MainLayout';
 import About from './pages/about/About';
 import AllGames from './pages/all-games/AllGames';
+import DetailGame from './pages/detail-game/DetailGame';
 
 const App = () => {
   return (
@@ -22,6 +23,10 @@ const App = () => {
             <Route
               path="/all-games"
               element={<AllGames />}
+            />
+            <Route
+              path="/detail-game"
+              element={<DetailGame />}
             />
           </Routes>
         </MainLayout>

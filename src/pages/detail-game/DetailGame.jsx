@@ -16,11 +16,15 @@ const DetailGame = () => {
         <Loading />
       ) : (
         <div>
-          <div>{gameDetail?.name}</div>
-          <div>{gameDetail?.description}</div>
+          <h1 className="text-5xl font-bold">{gameDetail?.name}</h1>
+          <div
+            dangerouslySetInnerHTML={{ __html: gameDetail?.description }}
+            className="text-justify"
+          ></div>
           <img
             src={gameDetail?.background_image}
-            alt=""
+            alt={gameDetail?.name}
+            className="w-full h-[500px] object-cover"
           />
         </div>
       )}

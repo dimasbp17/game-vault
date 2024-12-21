@@ -15,17 +15,19 @@ const DetailGame = () => {
       {loading ? (
         <Loading />
       ) : (
-        <div>
-          <h1 className="text-5xl font-bold">{gameDetail?.name}</h1>
+        <div className="relative -mx-20">
           <div
-            dangerouslySetInnerHTML={{ __html: gameDetail?.description }}
-            className="text-justify"
-          ></div>
-          <img
-            src={gameDetail?.background_image}
-            alt={gameDetail?.name}
-            className="w-full h-[500px] object-cover"
-          />
+            className="relative w-full h-screen px-20 bg-center bg-cover"
+            style={{
+              backgroundImage: `linear-gradient(to top, #39289F, rgba(0, 0, 0, 0.5)), url(${gameDetail?.background_image})`,
+            }}
+          >
+            <h1 className="text-5xl font-bold">{gameDetail?.name}</h1>
+            <div
+              dangerouslySetInnerHTML={{ __html: gameDetail?.description }}
+              className="text-justify"
+            ></div>
+          </div>
         </div>
       )}
     </>

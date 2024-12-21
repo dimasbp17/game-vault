@@ -10,7 +10,7 @@ const Search = () => {
         </div>
         <input
           type="search"
-          className="text-sm lg:w-[600px] duration-200 px-8  py-2 rounded-full focus:border focus:bg-white hover:bg-white focus:border-gray-300 bg-white/20 focus:outline-none"
+          className="text-sm lg:w-[600px] duration-200 px-8 py-2 rounded-full focus:border focus:bg-white hover:bg-white focus:border-gray-300 bg-white/20 focus:outline-none"
           placeholder="Search game..."
         />
       </div>
